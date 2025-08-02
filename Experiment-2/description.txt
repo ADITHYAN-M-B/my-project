@@ -1,0 +1,15 @@
+
+This experiment is a simple responsive banking user interface built using only HTML and CSS.  
+The HTML file defines the structure of the interface. It contains an outer container (outer_box)
+which centers the UI on the page and an inner container (inner_box) which holds the main content.
+Inside the inner_box, there is a heading element (h1) used to display the balance amount, which 
+is currently set to $0. Below the balance, there is a container (buttons) that holds two buttons:
+a green Deposit button and a red Withdraw button.The CSS file is responsible for styling and making
+the design responsive. The body of the page uses Flexbox to center the entire UI vertically and 
+horizontally within the viewport. The outer_box and inner_box are styled with padding, rounded corners, 
+and box shadows to give a clean card-like appearance.The buttons are styled to be full-width by default
+with proper spacing between them. The Deposit button is green while the Withdraw button is red, and
+both buttons have hover effects that slightly darken theircolors for better user feedback. To make the
+UI responsive, a media query is used for screen sizes 480px and smaller. At this size, the layout of 
+the buttons changes from a vertical stack to a horizontalarrangement using Flexbox. The buttons adjust
+to share equal width when side by side, ensuring thedesign works well on mobile devices.
