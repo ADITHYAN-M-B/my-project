@@ -1,0 +1,15 @@
+In this experiment, I developed a simple Admin Dashboard web page using semantic HTML and CSS.
+The structure of the dashboard is defined in the base.html file, where semantic tags such as <header>,
+<aside>, <main>, <section>, and <footer> are used to organize the content meaningfully.
+The header contains the dashboard title and a dark mode toggle, while the sidebar navigation is
+implemented with the <aside> and <nav> tags, providing links to different sections like Home, Users, and Settings.
+The main area displays a welcome message and serves as the primary space for dashboard content,
+and the footer is placed at the bottom, centered for visual balance.
+Styling is handled in the style.css file, which uses CSS techniques like flexbox to create a responsive layout.
+The header and footer are highlighted with a green background and white text, while the sidebar features
+a light background and styled navigation links.
+The main content area is kept clean and readable. Flexbox is used to align the sidebar and main content
+horizontally, and the footer is centered both vertically and horizontally.
+This experiment demonstrates the use of semantic HTML for better accessibility and maintainability, combined 
+with CSS for layout and design.
+The result is a visually organized and user-friendly admin dashboard interface, with a dark mode option to enhance

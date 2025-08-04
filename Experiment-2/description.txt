@@ -1,15 +1,76 @@
 
-This experiment is a simple responsive banking user interface built using only HTML and CSS.  
-The HTML file defines the structure of the interface. It contains an outer container (outer_box)
-which centers the UI on the page and an inner container (inner_box) which holds the main content.
-Inside the inner_box, there is a heading element (h1) used to display the balance amount, which 
-is currently set to $0. Below the balance, there is a container (buttons) that holds two buttons:
-a green Deposit button and a red Withdraw button.The CSS file is responsible for styling and making
-the design responsive. The body of the page uses Flexbox to center the entire UI vertically and 
-horizontally within the viewport. The outer_box and inner_box are styled with padding, rounded corners, 
-and box shadows to give a clean card-like appearance.The buttons are styled to be full-width by default
-with proper spacing between them. The Deposit button is green while the Withdraw button is red, and
-both buttons have hover effects that slightly darken theircolors for better user feedback. To make the
-UI responsive, a media query is used for screen sizes 480px and smaller. At this size, the layout of 
-the buttons changes from a vertical stack to a horizontalarrangement using Flexbox. The buttons adjust
-to share equal width when side by side, ensuring thedesign works well on mobile devices.
+This interface is designed as a minimal frontend layout for a banking simulation or digital wallet concept.
+It includes a live balance display ($0) and two core action buttons: Deposit and Withdraw.
+
+1. FIELD: Balance Display (<h1>$0</h1>)
+Purpose: Displays the current balance (static in this version).
+
+Expected Behavior:
+Initially shows $0.
+
+2. BUTTON: Deposit
+Label: “Deposit”
+Style: Green button
+
+3. BUTTON: Withdraw
+Label: “Withdraw”
+Style: Red button
+
+
+CSS STYLING BREAKDOWN
+
+1. ELEMENT: body
+Purpose: Centers content both vertically and horizontally.
+
+Key Styles:
+display: flex; align-items: center; justify-content: center; height: 100vh;: Ensures vertical centering.
+background-color: white;: Clean, neutral background.
+
+2. ELEMENT: .outer_box
+Purpose: Acts as a main container for visual separation.
+Key Styles:
+padding: 40px; border-radius: 15px;: Spacious, rounded UI.
+box-shadow: 0 0 10px rgba(0,0,0,0.2);: Adds depth.
+
+3. ELEMENT: .inner_box
+Purpose: Contains balance and buttons with its own padding.
+Key Styles:
+min-width: 280px;: Ensures minimum usable width.
+box-shadow: Lighter shadow to distinguish from outer box.
+text-align: center;: Centers all content inside.
+
+4. ELEMENT: h1
+Purpose: Displays the current balance.
+Key Styles:
+font-size: 2em; color: black;: Large and readable balance.
+
+5. ELEMENT: .buttons
+Purpose: Groups and aligns the Deposit and Withdraw buttons.
+Key Styles:
+flex-direction: column; gap: 15px;: Vertically stacks buttons with spacing.
+
+6. ELEMENT: button
+Purpose: Styled call-to-action elements.
+Common Styles:
+padding: 12px 24px; border-radius: 5px; width: 100%;: Easy to click, full-width.
+transition: background 0.3s ease;: Smooth hover animations.
+
+7. RESPONSIVENESS: @media (max-width: 480px)
+Purpose: Makes layout mobile-friendly.
+
+Behavior:
+Changes .buttons to a row layout.
+Buttons shrink slightly in size for better fit.
+
+LEARNING OUTCOMES
+
+1.Understood how to build a clean, centered layout using Flexbox.
+
+2.Practiced styling buttons with hover states for clear UX cues.
+
+3.Learnt how to structure a UI with reusability in mind (outer_box, inner_box).
+
+4.Gained knowledge about responsive design with media queries.
+
+5.Prepared a visually functional mockup for financial app behavior (deposit/withdraw).
+
