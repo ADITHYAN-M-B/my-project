@@ -1,0 +1,93 @@
+Description:
+This interface is a simple Library Management page that allows users to add books with titles and authors,
+search for books by title or author, and remove books from the list.
+It uses HTML for structure, CSS for styling, and React (JavaScript) for dynamic state management.
+
+HTML STRUCTURE & ELEMENT DETAILS
+1. FIELD: Container (<div class="container">)
+Purpose: Holds the entire library management interface.
+Contents:
+- Heading (<h1>Library Management</h1>) — page title.
+- Search input (<input type="text" class="search-input">) — for filtering books.
+- Add book row (<div class="add-book-row">) — title input, author input, and "Add Book" button.
+- Book list (<div class="book-list">) — displays all books with remove buttons.
+Expected Behavior:
+- Centered content box with border and padding.
+- Elements stacked vertically with spacing.
+- Add book row aligned horizontally.
+
+2. FIELD: Search Input (<input class="search-input">)
+Purpose: Allows users to type queries to filter books by title or author.
+Contents: Placeholder "Search by title or author".
+Expected Behavior:
+- Filters books in real time, ignoring case sensitivity.
+
+3. FIELD: Add Book Row (<div class="add-book-row">)
+Purpose: Provides inputs and a button to add new books.
+Contents:
+- Title input (<input class="add-input" placeholder="New book title">)
+- Author input (<input class="add-input" placeholder="New book author">)
+- Add button (<button class="add-button">Add Book</button>)
+Expected Behavior:
+- Adds new book if both inputs are filled.
+- Clears input fields after adding.
+
+4. FIELD: Book List (<div class="book-list">)
+Purpose: Displays all added books that match the search filter.
+Contents: Each book shows title (bold), author, and a "Remove" button.
+Expected Behavior:
+- Shows "No books found" if no matches.
+- Remove button deletes the book from the list.
+
+CSS STYLING BREAKDOWN
+1. ELEMENT: .container
+Purpose: Main box styling.
+Key Styles: Centered, padding, border, Arial font.
+
+2. ELEMENT: h1
+Purpose: Page title.
+Key Styles: Bottom margin for spacing.
+
+3. ELEMENT: .search-input
+Purpose: Search bar.
+Key Styles: Full width, padding, bottom margin.
+
+4. ELEMENT: .add-book-row
+Purpose: Layout for inputs and button.
+Key Styles: Flex row, spacing, full width.
+
+5. ELEMENT: .add-input
+Purpose: Text inputs for book details.
+Key Styles: Flexible width, padding.
+
+6. ELEMENT: .add-button
+Purpose: Add Book button.
+Key Styles: Padding, same height as inputs.
+
+7. ELEMENT: .book-list
+Purpose: Container for book items.
+Key Styles: Vertical flex layout with gaps.
+
+8. ELEMENT: .book-item
+Purpose: Individual book row.
+Key Styles: Flex row, spacing, border, padding.
+
+9. ELEMENT: .no-results
+Purpose: Message for no matches.
+Key Styles: Italic, lighter color, margin-top.
+
+REACT FUNCTIONALITY
+1. STATE VARIABLES:
+- books → array of book objects { id, title, author }
+- search → search query string
+- title, author → new book input values
+
+2. EVENT HANDLERS:
+- addBook() → adds a new book if inputs are valid, then clears fields
+- removeBook(id) → deletes a book from the list
+- Input change handlers update states
+
+3. RENDER LOGIC:
+- Filter books by title or author (case-insensitive).
+- If no matches, show "No books found".
+- Render book list dynamically with remove option for each entry.
