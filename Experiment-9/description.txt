@@ -1,0 +1,79 @@
+Description:
+
+This interface is a simple Person Class Hierarchy page that lets users add Students or Teachers with dynamic input. 
+It demonstrates object-oriented programming concepts like inheritance and method overriding using JavaScript ES6 classes.
+The interface uses HTML for structure, CSS for styling, and JavaScript for creating and displaying objects dynamically.
+
+HTML STRUCTURE & ELEMENT DETAILS
+
+1. FIELD: Form Container (<div class="form-container">)
+Purpose: Holds the input form for adding Students or Teachers.
+Contents:
+- Dropdown (<select id="type">) — to select between Student and Teacher.
+- Name input (<input id="name">) — for entering the person’s name.
+- Age input (<input id="age">) — for entering the person’s age.
+- Extra input (<input id="extra">) — for entering course (Student) or subject (Teacher).
+- Buttons (<button id="addBtn">, <button id="clearBtn">) — to add a person or clear all entries.
+Expected Behavior:
+- Centered on the page with padding and vertical layout.
+- Input fields and buttons are aligned for usability.
+
+2. FIELD: Person Display Container (<div id="app">)
+Purpose: Displays dynamically created Student or Teacher cards.
+Contents:
+- Cards (<div class="card">) with title (<div class="title">) and info (<div class="info">).
+Expected Behavior:
+- Shows added persons in separate cards.
+- Each card displays name, age, and course/subject.
+
+CSS STYLING BREAKDOWN
+
+1. ELEMENT: body
+Purpose: Overall page layout.
+Key Styles:
+- Light background, padding, and centered content using Flexbox.
+
+2. ELEMENT: .form-container
+Purpose: Main input box.
+Key Styles:
+- White background, padding, rounded corners, and shadow.
+- Vertical layout with gaps between fields.
+
+3. ELEMENT: label, input, select, button
+Purpose: Input and selection elements.
+Key Styles:
+- Padding, borders, and border-radius for usability.
+- Buttons styled with hover effects; Add (green) and Clear (red).
+
+4. ELEMENT: .card
+Purpose: Displays individual Student or Teacher.
+Key Styles:
+- White background, padding, shadow, rounded corners, and consistent width.
+
+5. ELEMENT: .title & .info
+Purpose: Card heading and details.
+Key Styles:
+- Bold title for person type (Student/Teacher).
+- Info shows name, age, and course/subject in readable font.
+
+JAVASCRIPT FUNCTIONALITY
+
+1. VARIABLES:
+- typeSelect — dropdown to select Student or Teacher.
+- nameInput, ageInput, extraInput — user input fields.
+- extraLabel — label for course/subject.
+- addBtn, clearBtn — action buttons.
+- app — container for cards.
+
+2. EVENTS:
+- Change event on typeSelect — updates label and placeholder for course or subject.
+- Click event on addBtn — creates a new Student or Teacher object using inheritance and method overriding, then displays a card.
+- Click event on clearBtn — clears all cards.
+
+3. BEHAVIOR:
+- When adding a person:
+  - Reads input values.
+  - Creates a Student or Teacher object using the appropriate class.
+  - Calls overridden displayInfo() to show name, age, and course/subject.
+  - Appends a card with the person’s info to the display container.
+- Supports adding multiple people dynamically.

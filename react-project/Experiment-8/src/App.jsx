@@ -12,7 +12,7 @@ export default function App() {
     if (!title.trim() || !author.trim()) return;
     setBooks([
       ...books,
-      { id: Date.now(), title: title.trim(), author: author.trim() },
+      { id: Date.now(), title: title.trim(), author: author.trim() }
     ]);
     setTitle("");
     setAuthor("");
@@ -43,20 +43,22 @@ export default function App() {
         className="search-input"
       />
 
-      <div className="book-form">
+      <div className="add-book-row">
         <input
           type="text"
           placeholder="New book title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          className="add-input"
         />
         <input
           type="text"
           placeholder="New book author"
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
+          className="add-input"
         />
-        <button onClick={addBook}>Add Book</button>
+        <button onClick={addBook} className="add-button">Add Book</button>
       </div>
 
       <BookList books={filteredBooks} onRemove={removeBook} />

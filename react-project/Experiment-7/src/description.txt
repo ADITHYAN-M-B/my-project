@@ -1,0 +1,76 @@
+Description:
+This interface is a simple Product List page that displays products in styled cards with their name, price, and stock status.
+It uses React for component-based rendering, HTML for structure, and CSS for layout and styling.
+
+HTML STRUCTURE & ELEMENT DETAILS
+1. FIELD: Main Wrapper (<main class="app-main">)
+Purpose: Centers the entire product list on the page.
+Contents:
+- Container (<div class="app-container">) — holds title and product list.
+
+2. FIELD: Container (<div class="app-container">)
+Purpose: Provides a bordered, padded box for the product list.
+Contents:
+- Heading (<h1 class="app-title">Products List</h1>) — page title.
+- Product list (<div class="product-list">) — flex container holding product cards.
+Expected Behavior:
+- Center-aligned with padding and border.
+- Title above product cards.
+
+3. FIELD: Product List (<div class="product-list">)
+Purpose: Holds all product cards.
+Contents:
+- Multiple ProductCard components.
+Expected Behavior:
+- Items displayed side by side with spacing.
+
+4. FIELD: Product Card (<div class="product-card">)
+Purpose: Displays details of a single product.
+Contents:
+- Product name (<h3 class="product-title">)
+- Product price (<p class="product-price">)
+- Stock status (<p>)
+Expected Behavior:
+- Each product card is styled with border, shadow, and rounded corners.
+- Stock status dynamically shows "In Stock" or "Out of Stock".
+
+CSS STYLING BREAKDOWN
+1. ELEMENT: .app-main
+Purpose: Main wrapper layout.
+Key Styles: Flexbox centering, padding.
+
+2. ELEMENT: .app-container
+Purpose: Content box.
+Key Styles: Border, padding, centered text.
+
+3. ELEMENT: .app-title
+Purpose: Page heading.
+Key Styles: Bold, larger font size, margin below.
+
+4. ELEMENT: .product-list
+Purpose: Layout for product cards.
+Key Styles: Flex display, gap between items, centered alignment.
+
+5. ELEMENT: .product-card
+Purpose: Individual product container.
+Key Styles: Border, rounded corners, padding, box shadow, fixed width, centered text.
+
+6. ELEMENT: .product-title
+Purpose: Product name.
+Key Styles: Bold, margin bottom.
+
+7. ELEMENT: .product-price
+Purpose: Product price text.
+Key Styles: Margin bottom.
+
+REACT FUNCTIONALITY
+1. COMPONENTS:
+- ProductCard: Renders name, price, and stock status of a product.
+- App: Main component rendering the product list.
+
+2. DATA:
+- products: Array of product objects { name, price, inStock }.
+
+3. RENDER LOGIC:
+- App maps over products array to generate ProductCard for each product.
+- Each ProductCard displays details with conditional stock status.

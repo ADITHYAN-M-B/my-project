@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Person Class Hierarchy</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Person Class Hierarchy</h1>
+
+  <div class="form-container">
+    <label>
+      Type:
+      <select id="type">
+        <option value="student">Student</option>
+        <option value="teacher">Teacher</option>
+      </select>
+    </label>
+
+    <label>
+      Name:
+      <input type="text" id="name" placeholder="Enter name" />
+    </label>
+
+    <label>
+      Age:
+      <input type="number" id="age" placeholder="Enter age" />
+    </label>
+
+    <label>
+      <span id="extra-label">Course:</span>
+      <input type="text" id="extra" placeholder="Enter course" />
+    </label>
+
+    <button id="addBtn">Add Person</button>
+    <button id="clearBtn">Clear All</button>
+  </div>
+
+  <div id="app"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
