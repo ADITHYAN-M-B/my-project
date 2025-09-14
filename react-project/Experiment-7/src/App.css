@@ -1,0 +1,47 @@
+/* Main wrapper */
+.app-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+/* Container with border */
+.app-container {
+  border: 1px solid black;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+/* Title */
+.app-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Product list layout */
+.product-list {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+/* Product card */
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  width: 180px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.product-title {
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.product-price {
+  margin-bottom: 0.5rem;
+}
