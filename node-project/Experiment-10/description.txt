@@ -1,0 +1,57 @@
+CLI Employee Management System Using Node.js and Arrays
+
+Code Explanation:
+
+1. Importing readline module:
+   - The code uses Node.js's built-in 'readline' module to handle user input from the terminal.
+   - This allows interactive input/output without any GUI.
+
+2. Employee Array:
+   - An empty array 'employees' is created to store employee objects.
+   - Each employee object has two properties: 'id' and 'name'.
+
+3. Readline Interface:
+   - The 'readline.createInterface' function sets up input and output streams for the terminal.
+   - 'input' is set to process.stdin and 'output' to process.stdout.
+
+4. showMenu() Function:
+   - Displays a text-based menu to the user with four options:
+     1. Add Employee
+     2. List Employees
+     3. Remove Employee
+     4. Exit
+   - Prompts the user to choose an option.
+
+5. handleMenu(option) Function:
+   - Takes the user's input and decides which action to perform.
+   - Calls 'addEmployee()', 'listEmployees()', 'removeEmployee()', or closes the program.
+
+6. addEmployee() Function:
+   - Prompts the user to enter an employee ID and name.
+   - Checks if the ID already exists in the array to avoid duplicates.
+   - Adds a new employee object to the array if the ID is unique.
+   - Confirms addition to the user and returns to the menu.
+
+7. listEmployees() Function:
+   - Checks if there are employees in the array.
+   - If the array is empty, it shows 'No employees found.'
+   - Otherwise, it loops through the array and prints each employee's ID and name.
+
+8. removeEmployee() Function:
+   - Prompts the user to enter the ID of the employee to remove.
+   - Searches the array for the employee with the given ID.
+   - If found, removes the employee using 'splice' and confirms deletion.
+   - If not found, displays an error message.
+   - Returns to the menu afterward.
+
+9. Starting the Application:
+   - The 'showMenu()' function is called at the end to start the interactive CLI.
+   - The program runs in a loop until the user selects the 'Exit' option.
+
+Summary:
+This code demonstrates:
+- Creating an interactive CLI in Node.js.
+- Handling user input using 'readline'.
+- Performing basic CRUD operations (Create, Read, Delete) on an array.
+- Ensuring uniqueness of employee IDs.
+- Looping the menu until the user decides to exit.

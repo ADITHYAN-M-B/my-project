@@ -1,0 +1,39 @@
+RESTful API for Managing a Playing Card Collection
+
+This experiment involves building a RESTful API using Express.js to manage a collection of playing cards.
+The API demonstrates routing, handling HTTP methods, data validation, and basic data manipulation in a Node.js environment.
+
+Functionality:
+- GET /cards
+  Retrieve a list of all cards.
+
+- GET /cards/:id
+  Retrieve a specific card by its unique ID. Returns 404 if not found.
+
+- POST /cards
+  Add a new card with 'suit' and 'value'. Returns 400 if fields are missing. Each card is assigned a unique id.
+
+- DELETE /cards/:id
+  Delete a card by ID. Returns 404 if the card does not exist. Successful deletion returns the deleted card information.
+
+Code:
+- Uses Express.js to create the server and define routes.
+- Uses body-parser middleware to parse JSON request bodies.
+- Stores card data in an in-memory array.
+- Implements error handling for invalid operations.
+- Automatically generates unique IDs for each card.
+
+Using Postman:
+Postman is used to test the API endpoints:
+- GET requests: View all cards or a specific card by ID.
+- POST requests: Add new cards by sending JSON payloads with suit and value.
+- DELETE requests: Remove cards using their ID.
+- Check response status codes and JSON messages for verification.
+
+Key Learnings:
+- Setting up an Express.js server and defining routes.
+- Handling HTTP methods (GET, POST, DELETE) with appropriate response codes.
+- Using middleware to parse JSON requests.
+- Implementing basic error handling.
+- Managing an in-memory data store.
+- Testing APIs using Postman.

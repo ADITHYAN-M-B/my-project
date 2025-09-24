@@ -1,0 +1,34 @@
+Concurrent Ticket Booking System
+
+Objective:
+Create a Node.js ticket booking system that prevents double booking using a seat locking mechanism. 
+Users can view seats, lock temporarily, confirm booking, or release locks.
+
+How it Works:
+- Seats stored in-memory with states: available, locked, booked.
+- Locking a seat generates a unique token and lasts 1 minute.
+- Confirming within 1 minute changes seat to booked.
+- Locks expire automatically or can be released manually.
+
+API Endpoints:
+1. GET /seats        → View all seats and their status.
+2. GET /seat/:id      → View a specific seat.
+3. POST /lock         → Lock a seat. Body: { seatId, userId } → returns lockToken.
+4. POST /confirm      → Confirm a locked seat. Body: { seatId, userId, lockToken }.
+5. POST /unlock       → Release a locked seat. Body: { seatId, userId, lockToken }.
+
+Testing with Postman:
+- Start server: `node server.js`
+- Set environment variable: baseUrl = http://localhost:3000
+
+- Steps:
+  1. GET /seats → Check available seats.
+  2. POST /lock → Lock a seat and store lockToken.
+  3. POST /confirm → Confirm the seat using lockToken.
+  4. GET /seats → Verify seat is booked.
+  5. Optional: POST /unlock → Release lock before confirming.
+
+Observations:
+- Only one user can lock a seat at a time.
+- Locks expire after 1 minute.
+- System prevents double booking under concurrent requests.
