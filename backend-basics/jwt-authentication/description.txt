@@ -1,12 +1,56 @@
 JWT Authentication for Secure Banking API Endpoints
 
-Objective: Learn to implement JWT-based authentication for securing API endpoints.
+1. Server Setup:
+   - Uses Express framework to create a web server.
+   - Uses body-parser via express.json() to parse incoming JSON requests.
+   - Server listens on port 3010.
+   - Defines a secret key (SECRET_KEY) for signing JWT tokens.
 
-  - Create a /login route with hardcoded username and password.
-  - Generate and return a JWT token upon successful login.
-  - Implement middleware to verify JWT token for protected banking routes.
-  - Create protected routes: /balance, /deposit, /withdraw.
-  - Handle errors like invalid tokens or insufficient balance.
-  - Test the API by logging in, obtaining a token, and accessing protected routes.
+2. Fake User:
+   - A hardcoded user object:
+     - username: "admin"
+     - password: "password"
+   - Used for authentication during login.
 
-Learning Outcome: Secure API design using JWT, understanding token verification and controlled access.
+3. JWT Authentication Middleware (authenticateJWT):
+   - Checks for the Authorization header.
+   - Expected format: "Bearer <token>".
+   - Verifies the token using jwt.verify() with SECRET_KEY.
+   - On successful verification, attaches the user info to req.user and calls next().
+   - Returns 401 if token is missing.
+   - Returns 403 if token is invalid or expired.
+
+4. Banking Data:
+   - Maintains a single variable `balance` initialized to 1000.
+   - All deposit and withdrawal operations update this variable.
+
+5. Routes:
+
+   a) /login (POST):
+      - Accepts JSON body with "username" and "password".
+      - Checks credentials against the hardcoded USER.
+      - On success, returns a JWT token valid for 1 hour.
+      - Returns 401 if credentials are invalid.
+
+   b) /balance (GET):
+      - Protected route; requires JWT authentication.
+      - Returns the current balance as JSON.
+
+   c) /deposit (POST):
+      - Protected route; requires JWT authentication.
+      - Accepts JSON body with "amount".
+      - Adds the amount to the balance.
+      - Returns a success message with updated balance.
+
+   d) /withdraw (POST):
+      - Protected route; requires JWT authentication.
+      - Accepts JSON body with "amount".
+      - Checks if balance is sufficient; if not, returns 400 error.
+      - Deducts the amount from the balance.
+      - Returns a success message with updated balance.
+
+6. Purpose and Use Case:
+   - Demonstrates JWT-based authentication in an Express API.
+   - Provides simple banking operations: login, check balance, deposit, withdraw.
+   - Shows secure route handling with token verification.
+   - Useful as a learning example for secure API design with JWT.

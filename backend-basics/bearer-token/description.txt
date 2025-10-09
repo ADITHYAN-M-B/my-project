@@ -1,13 +1,47 @@
 Middleware Implementation for Logging and Bearer Token Authentication
 
-Objective: Learn to implement middleware in Express.js for logging requests and protecting routes.
+1. Server Setup:
+   - Uses the express framework to create a web server.
+   - Server listens on port 3010 and logs a message when running.
 
-  - Create a logging middleware that records HTTP method, URL, and timestamp for each request.
-  - Create an authentication middleware that allows access only with the Bearer token "mysecrettoken".
-  - Apply logging middleware globally and authentication middleware to protected routes.
-  - Create at least two routes:
-    - Public route (no authentication required)
-    - Protected route (requires Bearer token)
-  - Test using Postman or curl to verify logging and authentication.
+2. Logging Middleware (logger):
+   - Captures and logs every incoming HTTP request.
+   - Logs include:
+     - Timestamp in ISO format.
+     - HTTP method (GET, POST, etc.).
+     - Requested URL.
+   - Ensures visibility of all traffic for debugging or monitoring purposes.
+   - Applied globally using app.use(logger), so it runs before every route handler.
 
-Learning Outcome: Understanding middleware implementation and secure route access in Node.js.
+3. Bearer Token Authentication Middleware (authenticateToken):
+   - Secures protected routes by checking the Authorization header.
+   - Expected format: Bearer mysecrettoken.
+   - Workflow:
+     1. Checks if the Authorization header exists; if not, returns HTTP 401 Unauthorized.
+     2. Splits the header to extract the token.
+     3. Compares the token against the expected value (mysecrettoken).
+     4. If the token is invalid, returns HTTP 403 Forbidden.
+     5. If valid, calls next() to proceed to the route handler.
+
+4. Routes:
+   - /public:
+     - No authentication required.
+     - Responds with a JSON message: "This is a public route, no token required."
+   - /protected:
+     - Uses authenticateToken middleware.
+     - Accessible only if a valid token is provided.
+     - Responds with a JSON message: "Welcome! You accessed a protected route."
+
+5. Middleware Flow:
+   - Every request passes through logger first.
+   - If the route is /protected, the authenticateToken middleware runs next.
+   - If authentication passes, the request reaches the route handler.
+
+6. Server Start:
+   - app.listen(PORT, ...) starts the server.
+   - Logs "Server running on http://localhost:3010" to indicate readiness.
+
+7. Purpose and Use Case:
+   - Demonstrates Express middleware usage for logging and authentication.
+   - Provides a basic example of public vs protected routes.
+   - Useful for learning token-based authentication without external libraries like JWT.
