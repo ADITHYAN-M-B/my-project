@@ -1,0 +1,12 @@
+JWT Authentication for Secure Banking API Endpoints
+
+Objective: Learn to implement JWT-based authentication for securing API endpoints.
+
+  - Create a /login route with hardcoded username and password.
+  - Generate and return a JWT token upon successful login.
+  - Implement middleware to verify JWT token for protected banking routes.
+  - Create protected routes: /balance, /deposit, /withdraw.
+  - Handle errors like invalid tokens or insufficient balance.
+  - Test the API by logging in, obtaining a token, and accessing protected routes.
+
+Learning Outcome: Secure API design using JWT, understanding token verification and controlled access.

@@ -1,0 +1,13 @@
+Middleware Implementation for Logging and Bearer Token Authentication
+
+Objective: Learn to implement middleware in Express.js for logging requests and protecting routes.
+
+  - Create a logging middleware that records HTTP method, URL, and timestamp for each request.
+  - Create an authentication middleware that allows access only with the Bearer token "mysecrettoken".
+  - Apply logging middleware globally and authentication middleware to protected routes.
+  - Create at least two routes:
+    - Public route (no authentication required)
+    - Protected route (requires Bearer token)
+  - Test using Postman or curl to verify logging and authentication.
+
+Learning Outcome: Understanding middleware implementation and secure route access in Node.js.
