@@ -1,0 +1,11 @@
+Account Transfer System with Balance Validation in Node.js
+
+Objective: Learn to implement a secure money transfer system with balance validation in Node.js and MongoDB.
+
+  - Create API endpoint to transfer money between user accounts.
+  - Validate sender’s balance before performing the transfer.
+  - Ensure both accounts exist before updating balances.
+  - Return error messages for insufficient balance or non-existent accounts.
+  - Test with sample accounts to demonstrate successful and failed transfer scenarios.
+
+Learning Outcome: Understanding how to maintain data consistency and logical correctness at the application level.
