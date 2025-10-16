@@ -1,11 +1,58 @@
 Account Transfer System with Balance Validation in Node.js
 
-Objective: Learn to implement a secure money transfer system with balance validation in Node.js and MongoDB.
+1. Server Setup:
+   - Uses Express framework to create a web server.
+   - Uses body-parser via express.json() to parse incoming JSON requests.
+   - Server listens on port 3011.
 
-  - Create API endpoint to transfer money between user accounts.
-  - Validate sender’s balance before performing the transfer.
-  - Ensure both accounts exist before updating balances.
-  - Return error messages for insufficient balance or non-existent accounts.
-  - Test with sample accounts to demonstrate successful and failed transfer scenarios.
+2. MongoDB Connection:
+   - Connects to a local MongoDB instance at mongodb://127.0.0.1:27017/bankDB.
+   - Uses mongoose for object modeling.
+   - Logs "Connected to MongoDB" on successful connection.
+   - Logs an error message if the connection fails.
 
-Learning Outcome: Understanding how to maintain data consistency and logical correctness at the application level.
+3. User Schema:
+   - Defines a Mongoose schema for users with the following fields:
+     - name: String, required, unique.
+     - balance: Number, required, minimum 0.
+   - Creates a Mongoose model named "User" from the schema.
+
+4. Create User Route (/createusers):
+   - HTTP Method: POST
+   - Accepts JSON body with "name" and "balance".
+   - Validates input: name required, balance required and non-negative.
+   - Checks for uniqueness of user name.
+   - Saves the new user to MongoDB.
+   - Returns status 201 with created user data or appropriate error messages:
+     - 400 for missing fields or negative balance.
+     - 400 if user already exists.
+     - 500 for server errors.
+
+5. Transfer Money Route (/transfer):
+   - HTTP Method: POST
+   - Accepts JSON body with "fromUserName", "toUserName", and "amount".
+   - Validates input: all fields required, amount must be positive.
+   - Checks if sender and receiver exist.
+   - Checks if sender has sufficient balance.
+   - Performs sequential updates:
+     1. Deducts amount from sender.
+     2. Adds amount to receiver.
+   - Saves updated balances in MongoDB.
+   - Returns success message with updated balances or appropriate error messages:
+     - 400 for invalid input or insufficient balance.
+     - 404 if either user is not found.
+     - 500 for server errors.
+
+6. List All Users Route (/users):
+   - HTTP Method: GET
+   - Fetches all users from MongoDB.
+   - Returns users as JSON array.
+   - Returns 500 for server errors.
+
+7. Purpose and Use Case:
+   - Demonstrates basic banking operations using MongoDB:
+     - Creating users with initial balances.
+     - Transferring money between users safely.
+     - Listing all users.
+   - Provides validation and error handling for secure transactions.
+   - Useful as a backend template for simple banking or wallet applications.
