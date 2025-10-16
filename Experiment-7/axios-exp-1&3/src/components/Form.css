@@ -1,0 +1,32 @@
+.student-form {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: grey;
+}
+
+.student-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.student-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #000;
+}
+
+.student-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.student-form p {
+  text-align: center;
+  margin-top: 10px;
+}

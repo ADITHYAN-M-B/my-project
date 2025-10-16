@@ -1,0 +1,33 @@
+Experiment-1 and Experiment-3 using axioms and react app
+
+Components:
+1. AdminDashboard
+   - Fetches users from JSONPlaceholder using Axios.
+   - Displays users/students in a dashboard layout (header, nav, main, footer).
+   - Adds newly registered students dynamically when 'newStudent' prop is received.
+   - Supports dark mode using a checkbox and CSS variables.
+   - Uses React state (useState) and effect (useEffect) hooks.
+
+2. StudentForm
+   - Collects Name, Email, and Age from the user.
+   - On submit, sends data to parent via 'onStudentAdded' callback.
+   - Displays a success message and resets the form after submission.
+   - Uses controlled components for form input handling.
+
+Data Handling:
+- Axios is used to fetch users from an external API.
+- Axios is a promise-based HTTP client for JavaScript.
+- It works in both browsers and Node.js environments.
+- Allows sending HTTP requests like GET, POST, PUT, DELETE.
+- Automatically parses JSON responses.
+- Supports request and response interceptors for handling or modifying requests globally.
+- Can handle errors, HTTP status codes, and timeouts efficiently.
+- Supports custom headers and sending data in the request body.
+- Works well with async/await for clean asynchronous code.
+- Makes API calls simple and consistent, reducing boilerplate code.
+
+Styling:
+- Dashboard uses CSS Grid layout for header, nav, main, and footer.
+- Uses CSS variables for theming and dark mode toggle.
+- Forms are styled for readability and user-friendliness.
+
