@@ -1,0 +1,37 @@
+Description:
+
+1. Initialize Project:
+   - Create a new Node.js project using `npm init -y`.
+   - Install dependencies:
+     npm install express jsonwebtoken body-parser
+
+2. Setup Server:
+   - Create a file named `server.js`.
+   - Import required modules and initialize an Express app.
+   - Use express.json() to handle JSON requests.
+
+3. Create User Data:
+   - Define users with predefined credentials and roles (Admin, Moderator, User).
+
+4. Implement Login Route:
+   - Create a /login route that accepts username and password.
+   - Verify credentials and generate a JWT token containing the user’s ID, username, and role.
+   - Send the token and user information in the response.
+
+5. Create Middleware:
+   - authenticateToken: Verifies JWT tokens received from clients.
+   - authorizeRoles: Allows access only if the user’s role matches the route’s required roles.
+
+6. Define Protected Routes:
+   - /admin/dashboard → Accessible only by Admin.
+   - /moderator/manage → Accessible by Moderator and Admin.
+   - /user/profile → Accessible only by User.
+
+7. Run Server:
+   - Start the server using node server.js.
+   - The app runs on http://localhost:3001.
+
+8. Test Using Postman:
+   - Send a POST request to /login with username and password to get a JWT token.
+   - Use the token in the header (Authorization: Bearer <token>) to access protected routes.
+   - Verify access control for each role.
