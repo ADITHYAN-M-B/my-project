@@ -1,0 +1,10 @@
+Description:
+Creating a Login Form with React State Management
+
+- Created a login form component with fields for username and password.
+- Used the useState hook to store and update input values as the user types.
+- Implemented a submit button that triggers a validation check.
+- Displayed an error message if either field is empty on submission.
+- Logged valid username and password inputs (e.g., Username: ByteXL, Password: 12345) to the console.
+- Cleared the form fields after successful submission.
+- Demonstrated real-time state management, input handling, and basic validation in a React application.

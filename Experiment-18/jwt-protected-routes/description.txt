@@ -1,0 +1,18 @@
+Experiment: Implementing Protected Routes with JWT Verification
+
+1. Set up a Node.js and Express.js backend server.
+
+2. Implement a login route that authenticates a user using predefined credentials.
+
+3. Generate a JWT token upon successful login.
+
+4. Create a middleware function to verify JWT tokens from the Authorization header.
+
+5. Apply the middleware to protect specific routes so only users with valid tokens can access them.
+
+6. Test the protected routes using Postman:
+   - Access with a valid token → request succeeds.
+   - Access with an invalid or missing token → request is blocked.
+   
+7. Observe how JWT authentication restricts access and ensures route security.
+

@@ -3,7 +3,7 @@ const SECRET_KEY = "mysecretkey";
 
 function verifyToken(req, res, next) {
   const token = req.headers["authorization"];
-  if (!token) return res.status(403).json({ error: "No token provided." });
+  if (!token) return res.status(403).json({ error: "Access denied. No token provided." });
 
   try {
     const decoded = jwt.verify(token.split(" ")[1], SECRET_KEY);
@@ -17,7 +17,7 @@ function verifyToken(req, res, next) {
 function authorizeRoles(...roles) {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
-      return res.status(403).json({ error: "Forbidden. You don’t have access." });
+      return res.status(403).json({ error: "Forbidden. You do not have permission." });
     }
     next();
   };
