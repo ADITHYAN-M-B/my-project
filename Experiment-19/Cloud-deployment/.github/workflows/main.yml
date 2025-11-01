@@ -1,28 +1,28 @@
-name: Build React App (Experiment-19 Practice-2)
+name: Cloud Deployment (Experiment-19)
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'Experiment-19/practice-2/**'
+      - 'Experiment-19/Cloud-deployment/**'
   pull_request:
     branches:
       - main
     paths:
-      - 'Experiment-19/practice-2/**'
+      - 'Experiment-19/Cloud-deployment/**'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: Experiment-19/practice-2
+        working-directory: Experiment-19/Cloud-deployment
 
     permissions:
       contents: read
       packages: write
-        
+       
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -39,7 +39,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t react-practice-2 .
+          docker build -t react-cloud-deployment .
 
       - name: Check Docker Username (for debug only)
         run: echo "Docker user is $DOCKER_USERNAME"
@@ -56,5 +56,5 @@ jobs:
       - name: Push Image to Docker Hub
         if: github.ref == 'refs/heads/main'
         run: |
-          docker tag react-practice-2 ${{ secrets.DOCKERHUB_USERNAME }}/react-practice-2:latest
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/react-practice-2:latest
+          docker tag react-cloud-deployment ${{ secrets.DOCKERHUB_USERNAME }}/react-cloud-deployment:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/react-cloud-deployment:latest
