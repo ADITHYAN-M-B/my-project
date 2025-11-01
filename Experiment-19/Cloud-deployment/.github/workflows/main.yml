@@ -1,12 +1,7 @@
-name: Cloud Deployment (Experiment-19)
+name: Cloud deployment
 
 on:
   push:
-    branches:
-      - main
-    paths:
-      - 'Experiment-19/Cloud-deployment/**'
-  pull_request:
     branches:
       - main
     paths:
@@ -17,44 +12,35 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: Experiment-19/Cloud-deployment
+        working-directory: Experiment-19/Cloud-deployment 
 
-    permissions:
-      contents: read
-      packages: write
-       
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      - name: Install dependencies and build
-        run: |
-          npm install
-          npm run build
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build React App
+        run: npm run build
 
       - name: Build Docker Image
-        run: |
-          docker build -t react-cloud-deployment .
-
-      - name: Check Docker Username (for debug only)
-        run: echo "Docker user is $DOCKER_USERNAME"
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        run: docker build -t cloud-deployment .
 
       - name: Login to Docker Hub
         if: github.ref == 'refs/heads/main'
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Push Image to Docker Hub
+      - name: Push Docker Image to Docker Hub
         if: github.ref == 'refs/heads/main'
         run: |
-          docker tag react-cloud-deployment ${{ secrets.DOCKERHUB_USERNAME }}/react-cloud-deployment:latest
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/react-cloud-deployment:latest
+          docker tag cloud-deployment ${{ secrets.DOCKER_USERNAME }}/cloud-deployment:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/cloud-deployment:latest
