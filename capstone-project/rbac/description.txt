@@ -1,0 +1,87 @@
+PROJECT TITLE:Role-Based Access Control (RBAC) System 
+
+1. OVERVIEW
+- Built a complete RBAC (Role-Based Access Control) system using the MERN stack (MongoDB, Express, React, Node.js).
+- Implements Admin, Editor, and Viewer roles with distinct permissions.
+- Uses JWT authentication and middleware-based authorization.
+- Enforces data scoping and row-level ownership.
+- UI adapts dynamically based on user role and permissions.
+
+2. ROLES AND PERMISSIONS
+Admin:
+- Can create, read, update, and delete all posts.
+- Can manage all users and assign roles.
+
+Editor:
+- Can create, read, update, and delete only their own posts.
+- Cannot manage users or other editors’ content.
+
+Viewer:
+- Can only read posts.
+- Cannot create, update, or delete any data.
+
+3. BACKEND FEATURES
+- Authentication: JWT-based login and verification.
+- Authorization: Middleware checks for allowed roles.
+- Ownership: Editors can modify or delete only their posts.
+- Data Scoping: Editors see their posts; Admin sees all.
+- Protected Routes:
+  /auth/login – User authentication
+  /auth/me – Verify token and return role info
+  /posts – CRUD operations with role checks
+  /admin/users – Admin can list and change user roles
+- Error Handling: 401 (Unauthorized), 403 (Forbidden), 404 (Not Found)
+
+4. FRONTEND FEATURES
+- Login Page: User authentication using email and password.
+- Dashboard: Displays posts and role-specific actions.
+- UI Guarding: Buttons and routes hidden based on permissions.
+- Dynamic Permissions:
+  Admin – Full CRUD access
+  Editor – Own posts only
+  Viewer – Read-only access
+- Color Palette Used:
+  #2b6777, #c8d8e4, #ffffff, #f2f2f2, #52ab98
+
+5. API TESTING (POSTMAN)
+- POST /auth/login → Returns JWT token.
+- GET /auth/me → Verifies token and shows role info.
+- GET /posts → Lists posts (Editor sees only own).
+- POST /posts → Create post (Admin/Editor only).
+- PUT /posts/:id → Update post (Admin or own post).
+- DELETE /posts/:id → Delete post (Admin or own post).
+- Invalid token → 401 Unauthorized.
+- Forbidden action → 403 Forbidden.
+
+6. SEEDED USERS
+Admin User:
+  Email: admin@test.com
+  Password: password123
+
+Editor User:
+  Email: editor@test.com
+  Password: password123
+
+Viewer User:
+  Email: viewer@test.com
+  Password: password123
+
+7. SECURITY & VALIDATION
+- Passwords hashed using bcrypt.
+- Token expiry set to 1 hour.
+- Input validation using Joi.
+- CORS and CSRF considerations.
+- Deny-by-default authorization policy.
+
+8. TECH STACK
+Frontend: React.js, Axios, Context API
+Backend: Node.js, Express.js, JWT, Joi
+Database: MongoDB with Mongoose 
+Testing Tool: Postman
+
+9. PROJECT HIGHLIGHTS
+- Secure role-based access and ownership checks.
+- Full CRUD operations with role enforcement.
+- Token-based authentication with permission validation.
+- Dynamic UI adapting to user roles.
+- Clean color scheme and responsive design.

@@ -3,16 +3,12 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import Login from "./components/Login";
 import Dashboard from "./pages/Dashboard";
+import AdminPanel from "./pages/AdminPanel"; // ✅ new import
 import "./App.css";
 
-// ✅ Updated ProtectedRoute with loading check
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
-
-  // Show this temporarily while checking token
   if (loading) return <p>Loading...</p>;
-
-  // Once loading finishes, decide where to go
   return user ? children : <Navigate to="/login" />;
 }
 
@@ -27,6 +23,14 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <AdminPanel />
               </ProtectedRoute>
             }
           />

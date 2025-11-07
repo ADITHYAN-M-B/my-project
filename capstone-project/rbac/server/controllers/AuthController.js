@@ -1,58 +1,71 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import Joi from "joi";
 import User from "../models/User.js";
+import { getPermissionsForRole } from "../config/roles.js"; // ✅ Use centralized permissions
 
-// ✅ Define what each role can do
-const rolePermissions = {
-  Admin: ["posts:create", "posts:read", "posts:update", "posts:delete", "users:manage"],
-  Editor: ["posts:create", "posts:read", "posts:update:own", "posts:delete:own"],
-  Viewer: ["posts:read"],
-};
-
-// ✅ LOGIN CONTROLLER
+//  LOGIN CONTROLLER WITH VALIDATION
 export const login = async (req, res) => {
+  const schema = Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string().required(),
+  });
+
+  const { error } = schema.validate(req.body);
+  if (error) {
+    return res.status(400).json({ message: error.details[0].message });
+  }
+
   const { email, password } = req.body;
 
   try {
-    // 1️⃣ Find user by email
     const user = await User.findOne({ email });
     if (!user) return res.status(401).json({ message: "Invalid credentials" });
 
-    // 2️⃣ Compare the entered password with the stored bcrypt hash
     const isMatch = await bcrypt.compare(password, user.passwordHash);
     if (!isMatch) return res.status(401).json({ message: "Invalid credentials" });
 
-    // 3️⃣ Generate JWT token with role and userId
+    // JWT payload now uses consistent naming
     const token = jwt.sign(
-      { userId: user._id, role: user.role },
+      { id: user._id, role: user.role },
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
 
-    // 4️⃣ Get permissions based on user role
-    const permissions = rolePermissions[user.role] || [];
+    const permissions = getPermissionsForRole(user.role); // ✅ From config file
 
-    // 5️⃣ Send success response
     res.status(200).json({
       message: "Login successful",
       token,
       role: user.role,
       permissions,
     });
-
   } catch (err) {
     console.error("Login error:", err);
     res.status(500).json({ message: "Server error" });
   }
 };
 
-// ✅ REGISTER CONTROLLER (optional, if you use it)
+// REGISTER CONTROLLER WITH VALIDATION
 export const register = async (req, res) => {
+  const schema = Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string().min(6).required(),
+    role: Joi.string().valid("Admin", "Editor", "Viewer").required(),
+  });
+
+  const { error } = schema.validate(req.body);
+  if (error) {
+    return res.status(400).json({ message: error.details[0].message });
+  }
+
   const { email, password, role } = req.body;
 
   try {
     const existingUser = await User.findOne({ email });
-    if (existingUser) return res.status(400).json({ message: "User already exists" });
+    if (existingUser) {
+      return res.status(400).json({ message: "User already exists" });
+    }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -71,13 +84,13 @@ export const register = async (req, res) => {
   }
 };
 
-// ✅ AUTH CHECK (used by frontend to validate token)
+// AUTH CHECK (used by frontend to validate token)
 export const getMe = async (req, res) => {
   try {
-    const user = await User.findById(req.user.userId);
+    const user = await User.findById(req.user.id); // ✅ aligned with JWT payload
     if (!user) return res.status(404).json({ message: "User not found" });
 
-    const permissions = rolePermissions[user.role] || [];
+    const permissions = getPermissionsForRole(user.role); // ✅ From config file
 
     res.status(200).json({
       email: user.email,

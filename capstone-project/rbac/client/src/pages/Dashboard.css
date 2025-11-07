@@ -1,0 +1,75 @@
+/* --- Dashboard Layout --- */
+.dashboard-container {
+  background-color: #f5f7ff;
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Header Bar --- */
+.dashboard-header {
+  background-color: #2f3bff;
+  color: white;
+  padding: 1rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-header h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.dashboard-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dashboard-user span {
+  font-size: 1rem;
+}
+
+.dashboard-user button {
+  background: white;
+  color: #2f3bff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dashboard-user button:hover {
+  background: #e8ecff;
+}
+
+/* --- Main Content Layout --- */
+.dashboard-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 3rem;
+}
+
+/* --- Main Grid --- */
+.dashboard-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Make PostList fill column space nicely */
+.dashboard-content .postlist-container {
+  background-color: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
